@@ -11,18 +11,21 @@ data <- data.table::fread(input = "household_power_consumption.txt", na.strings 
 # Turning off scientific notation
 options(scipen=999)
 
-# Filtering data to 2007-02-01 and 2007-02-02
-subset <- data[data$Date %in% c("1/2/2007","2/2/2007") , ]
+# Changing date type
+data$Date <- as.Date(data$Date, "%d/%m/%Y") 
 
-# Changing date and time type
-date_time <- strptime(paste(subset$Date, subset$Time, sep = " "), "%d/%m/%Y %H:%M:%S")
+# Filtering data to 2007-02-01 and 2007-02-02
+data <- data[(Date >= "2007-02-01") & (Date <= "2007-02-02")]
+
+# Convert date and time
+date_time <- paste(as.Date(data$Date), data$Time)
+data$date_time <- as.POSIXct(date_time)
 
 
 # Plotting
-gap <- as.numeric(subset$Global_active_power)
-
 png("plot2.png", width = 480, height = 480)
-plot(date_time, gap, type = "l", xlab = "", 
-     ylab = "Global Active Power (kilowatts)")
+
+with(data, plot(Global_active_power ~ date_time, type = "l", xlab = "", 
+                ylab = "Global Active Power (kilowatts)"))
 
 dev.off()
