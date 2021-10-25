@@ -1,1 +1,1 @@
-# 01-Exoloratory-Data-Analysis
+# 01-Exploratory-Data-Analysis
