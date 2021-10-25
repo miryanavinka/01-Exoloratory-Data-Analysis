@@ -7,7 +7,7 @@ data <- data.table::fread(input = "household_power_consumption.txt", na.strings 
 
 ### Making Plots
 
-## Plot 3
+## Plot 2
 # Turning off scientific notation
 options(scipen=999)
 
@@ -26,7 +26,7 @@ png("plot3.png", width = 480, height = 480)
 
 with(data, {
   plot(Sub_metering_1 ~ date_time, type = "l", 
-       xlab = "", ylab = "Global Active Power (kilowatts)")
+       xlab = "", ylab = "Energy sub metering")
   lines(Sub_metering_2 ~ date_time, col = "Red")
   lines(Sub_metering_3 ~ date_time, col = "Blue")
 })
