@@ -27,8 +27,8 @@ png("plot3.png", width = 480, height = 480)
 with(data, {
   plot(Sub_metering_1 ~ date_time, type = "l", 
        xlab = "", ylab = "Energy sub metering")
-  lines(Sub_metering_2 ~ date_time, col = "Red")
-  lines(Sub_metering_3 ~ date_time, col = "Blue")
+  lines(Sub_metering_2 ~ date_time, col = "red")
+  lines(Sub_metering_3 ~ date_time, col = "blue")
 })
 legend("topright", col = c("black", "red", "blue"), lty = 1, lwd = 2, 
        legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
